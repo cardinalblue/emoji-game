@@ -110,21 +110,35 @@
 
 -(void)updateTimer
 {
-    [self requestUpdate];
+    [self requestUpdateNewGame:NO];
 }
 
--(void)requestUpdate
+-(void)requestUpdateNewGame:(BOOL)newGame
 {
     if (!_gameId) {
-        NSLog(@"---> requesting current game");
-        NSURL *url = [NSURL URLWithString:API_URL];
-        NSMutableURLRequest *req = [[NSMutableURLRequest alloc]
-                                    initWithURL:url ];
-        [NSURLConnection sendAsynchronousRequest:req queue:[self opQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-            if (!connectionError) {
-                [self handleData:data];
-            }
-        }];
+        if (newGame) {
+            NSLog(@"---> requesting NEW game");
+            NSURL *url = [NSURL URLWithString:API_URL];
+            NSMutableURLRequest *req = [[NSMutableURLRequest alloc]
+                                        initWithURL:url ];
+            [req setHTTPMethod:@"POST"];
+            [NSURLConnection sendAsynchronousRequest:req queue:[self opQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+                if (!connectionError) {
+                    [self handleData:data];
+                }
+            }];
+        }
+        else {
+            NSLog(@"---> requesting current game");
+            NSURL *url = [NSURL URLWithString:API_URL];
+            NSMutableURLRequest *req = [[NSMutableURLRequest alloc]
+                                        initWithURL:url ];
+            [NSURLConnection sendAsynchronousRequest:req queue:[self opQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+                if (!connectionError) {
+                    [self handleData:data];
+                }
+            }];
+        }
     }
     else {
         // For now always send the board in order to update
@@ -168,11 +182,11 @@
     game.delegate = delegate;
     return game;
 }
-- (id)init
+- (id)initNewGame:(BOOL)newGame
 {
     self.timer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(updateTimer) userInfo:nil repeats:YES];
     self.opQueue = [NSOperationQueue mainQueue];
-    [self requestUpdate];
+    [self requestUpdateNewGame:newGame];
     
     return self;
 }

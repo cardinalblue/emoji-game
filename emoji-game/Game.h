@@ -24,6 +24,7 @@
 @property (nonatomic, copy)      NSString    *board;
 @property (nonatomic, readwrite) BOOL        isGuessed;
 
+- (id)initNewGame:(BOOL)newGame;
 
 -(void)makeGuess:(NSString *)guess;
 -(void)updateBoard:(NSString *)board;
