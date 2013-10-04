@@ -22,7 +22,6 @@
 @property (nonatomic, weak) IBOutlet UILabel *answerLabel;
 @property (nonatomic, weak) IBOutlet UILabel *guessNumber;
 @property (nonatomic, weak) IBOutlet UITextField *guessField;
-
 @end
 
 @implementation CBViewController
@@ -34,6 +33,9 @@
     
     self.boardField.delegate = self;
     self.guessField.delegate = self;
+    
+    
+    self.game = [Game gameWithDelegate:self];
 }
 
 - (void) viewWillAppear:(BOOL)animated
@@ -41,15 +43,19 @@
     [super viewWillAppear:animated];
     
     // Ask what you want to be.
-    [self askUserPreference];
 }
 
+- (void) gameUpdated:(Game *)game
+{
+    self.boardField.text = game.board;
+    
+}
 
 // Guessfield, update when the user presses Done
 - (BOOL) textFieldShouldReturn:(UITextField *)textField
 {
     // Call delegate here
-    //    [textField.text ]
+    [self.game makeGuess:textField.text];
     return YES;
 }
 
@@ -62,6 +68,8 @@
 - (BOOL) textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
 {
     if ([text containsOnlyEmoji]) {
+        NSString *newString = [textView.text stringByReplacingCharactersInRange:range withString:text];
+        [self.game updateBoard:newString];
         return YES;
     } else {
         [self displayPopoverWithMessage:@"ONLY EMOJI ALLOWED!!"];
