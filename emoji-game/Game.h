@@ -10,19 +10,27 @@
 
 @class Game;
 @protocol GameDelegate <NSObject>
--(void) game:(Game*)game;
+-(void)gameUpdated:(Game*)game;
 @end
 
 @interface Game : NSObject
 
-@property (nonatomic, readonly) NSString *currentBoard;
-@property (nonatomic, readonly) NSString *currentGuess;
+@property (nonatomic, readonly) BOOL        isConnected;
 
--(void)makeGuess:(NSString*)guess;
--(void)updateBoard:(NSString*)board;
+@property (nonatomic, copy)      NSString    *question;
+@property (nonatomic, copy)      NSString    *answer;
+@property (nonatomic, copy)      NSString    *lastGuess;
+@property (nonatomic, readwrite) NSInteger   guessesCount;
+@property (nonatomic, copy)      NSString    *board;
+@property (nonatomic, readwrite) BOOL        isGuessed;
+
+
+-(void)makeGuess:(NSString *)guess;
+-(void)updateBoard:(NSString *)board;
 
 // As soon as you create a game, it begins polling and
-// will start updating your delegate
-+(Game *) gameWithURL:(NSURL*)url andDelegate:(id<GameDelegate>)delegate;
+// will start updating your delegate.
+//
++(Game *)gameWithDelegate:(id<GameDelegate>)delegate;
 
 @end
