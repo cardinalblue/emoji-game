@@ -60,6 +60,10 @@
     if (game.isGuessed) {
         [self displayPopoverWithMessage:
          [NSString stringWithFormat:@"Guess \"%@\" Won!",game.lastGuess]];
+        
+        self.game = [[Game alloc] initNewGame:YES];
+        [self.game setDelegate:self];
+        
     }
 }
 

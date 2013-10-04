@@ -13,7 +13,6 @@
 
 @interface Game()
 
-@property (nonatomic, weak)id<GameDelegate> delegate;
 @property (nonatomic, readonly) NSInteger    gameId;
 @property (nonatomic, strong) NSTimer  *timer;
 @property (nonatomic, strong) NSOperationQueue *opQueue;
