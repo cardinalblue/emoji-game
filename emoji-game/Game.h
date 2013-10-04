@@ -15,7 +15,7 @@
 
 @interface Game : NSObject
 
-@property (nonatomic, readonly) BOOL        isConnected;
+@property (nonatomic, readwrite) BOOL        isConnected;
 
 @property (nonatomic, copy)      NSString    *question;
 @property (nonatomic, copy)      NSString    *answer;

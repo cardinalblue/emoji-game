@@ -11,61 +11,81 @@
 
 #define API_URL  @"http://jcham.pagekite.me/games"
 
-@interface Game() <NSURLConnectionDelegate, NSURLConnectionDataDelegate>
+@interface Game()
 
 @property (nonatomic, weak)id<GameDelegate> delegate;
 @property (nonatomic, readonly) NSInteger    gameId;
-@property (nonatomic, strong) NSURLConnection *urlConnection;
+@property (nonatomic, strong) NSTimer  *timer;
+@property (nonatomic, strong) NSOperationQueue *opQueue;
 @end
 
 @implementation Game
 
-- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
+- (void)handleData:(NSData *)data
 {
-    // Kill current one
-    if (connection == _urlConnection)
-        self.urlConnection = nil;
-}
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
-{
-    if (connection != _urlConnection)
-        return;
-    
     // Parse data
     NSDictionary *info = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
     if (!info) {
-        NSLog(@"invalid data %@", data);
+        NSLog(@"invalid data");
         return;
     }
     
-//    // Update ourselves
-//    if ([info objectForKey:@"question"]) {
-//        self.question = [info objectForKey:@"question"];
-//    }
-//    if ([info objectForKey:@"answer"]) {
-//        self.answer = [info objectForKey:@"answer"];
-//    }
-//    if ([info objectForKey:@"last_guess"]) {
-//        self.lastGuess = [info objectForKey:@"last_guess"];
-//    }
-//    if ([info objectForKey:@"question"]) {
-//        self.question = [info objectForKey:@"question"];
-//    }
-//    if ([info objectForKey:@"question"]) {
-//        self.question = [info objectForKey:@"question"];
-//    }
-//    
-//    // Nofity delegate
+    // Always update isConnected
+    self.isConnected = YES;
     
+    // Update ourselves
+    id v = nil;
+
+    v = [info objectForKey:@"id"];
+    if (v) {
+        NSInteger gid = [v integerValue];
+        if (_gameId == 0) {
+            _gameId = gid;
+        }
+        else {
+            if (_gameId != gid) {
+                NSLog(@"!!!! invalid game id %d, expected %d", gid, _gameId);
+                return;
+            }
+        }
+    }
+
     
-    // Kill if current one
-    if (connection == _urlConnection)
-        self.urlConnection = nil;
+    v = [info objectForKey:@"question"];
+    if (v) {
+        self.question = [v isKindOfClass:[NSNull class]] ? nil : v;
+    }
+    v = [info objectForKey:@"answer"];
+    if (v) {
+        self.answer = [v isKindOfClass:[NSNull class]] ? nil : v;
+    }
+    v = [info objectForKey:@"last_guess"];
+    if (v) {
+        self.lastGuess =  [v isKindOfClass:[NSNull class]] ? nil : v;
+    }
+    v = [info objectForKey:@"guesses_count"];
+    if (v) {
+        self.guessesCount = [v isKindOfClass:[NSNull class]] ? 0 : [v integerValue];
+    }
+    v = [info objectForKey:@"board"];
+    if (v) {
+        self.board = [v isKindOfClass:[NSNull class]] ? nil : v;
+    }
+    v = [info objectForKey:@"is_guessed"];
+    if (v) {
+        self.isGuessed = [v isKindOfClass:[NSNull class]] ? NO : [v boolValue];
+    }
+
+    // Nofity delegate
+    [self.delegate gameUpdated:self];
     
 }
 
+
 -(void)makeGuess:(NSString *)guess
 {
+    NSLog(@"---> sending guess %@", guess);
+
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/%d/guess", API_URL, _gameId]];
     NSMutableURLRequest *req = [[NSMutableURLRequest alloc] initWithURL:url ];
     
@@ -74,8 +94,12 @@
         forHTTPHeaderField:@"Content-length"];
     [req setHTTPBody:[data dataUsingEncoding:NSUTF8StringEncoding]];
     
-    [req setHTTPMethod:@"PUT"];
-    self.urlConnection = [[NSURLConnection alloc] initWithRequest:req delegate:self];
+    [req setHTTPMethod:@"POST"];
+    [NSURLConnection sendAsynchronousRequest:req queue:[self opQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+        if (!connectionError) {
+            [self handleData:data];
+        }
+    }];
 }
 
 -(void)updateBoard:(NSString *)board
@@ -86,21 +110,27 @@
 
 -(void)updateTimer
 {
-    if (!self.urlConnection)
-        [self requestUpdate];
+    [self requestUpdate];
 }
 
 -(void)requestUpdate
 {
     if (!_gameId) {
+        NSLog(@"---> requesting current game");
         NSURL *url = [NSURL URLWithString:API_URL];
         NSMutableURLRequest *req = [[NSMutableURLRequest alloc]
                                     initWithURL:url ];
-        self.urlConnection = [[NSURLConnection alloc] initWithRequest:req delegate:self];
+        [NSURLConnection sendAsynchronousRequest:req queue:[self opQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+            if (!connectionError) {
+                [self handleData:data];
+            }
+        }];
     }
     else {
-        // For now always PUT the board in order to update
+        // For now always send the board in order to update
         if (self.board) {
+            NSLog(@"---> sending board (%d)", self.board.length);
+            
             NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/%d/board", API_URL, _gameId]];
             NSMutableURLRequest *req = [[NSMutableURLRequest alloc] initWithURL:url ];
 
@@ -109,23 +139,27 @@
                 forHTTPHeaderField:@"Content-length"];
             [req setHTTPBody:[data dataUsingEncoding:NSUTF8StringEncoding]];
             
-            [req setHTTPMethod:@"PUT"];
-            self.urlConnection = [[NSURLConnection alloc] initWithRequest:req delegate:self];
+            [req setHTTPMethod:@"POST"];
+            [NSURLConnection sendAsynchronousRequest:req queue:[self opQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+                if (!connectionError) {
+                    [self handleData:data];
+                }
+            }];
         }
         else {
+            NSLog(@"---> getting current state");
+            
             // Do the GET
             NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/%d", API_URL, _gameId]];
             NSMutableURLRequest *req = [[NSMutableURLRequest alloc] initWithURL:url ];
             
-            self.urlConnection = [[NSURLConnection alloc] initWithRequest:req delegate:self];
+            [NSURLConnection sendAsynchronousRequest:req queue:[self opQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+                if (!connectionError) {
+                    [self handleData:data];
+                }
+            }];
         }
     }
-}
-
--(void)setUrlConnection:(NSURLConnection *)urlConnection
-{
-    [self.urlConnection cancel];
-    _urlConnection = urlConnection;
 }
 
 +(Game *)gameWithDelegate:(id<GameDelegate>)delegate
@@ -136,7 +170,8 @@
 }
 - (id)init
 {
-    [NSTimer timerWithTimeInterval:5 target:self selector:@selector(updateTimer) userInfo:nil repeats:YES];
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(updateTimer) userInfo:nil repeats:YES];
+    self.opQueue = [NSOperationQueue mainQueue];
     [self requestUpdate];
     
     return self;
