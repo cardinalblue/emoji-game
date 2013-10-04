@@ -67,7 +67,7 @@
         [self displayPopoverWithMessage:
          [NSString stringWithFormat:@"Guess \"%@\" Won!",game.lastGuess]];
 
-        if (self.isGuesser) {
+        if (!self.isGuesser) {
             self.game = [[Game alloc] initNewGame:YES];
             [self.game setDelegate:self];
         } else {
