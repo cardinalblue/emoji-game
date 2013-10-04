@@ -34,6 +34,8 @@
     self.boardField.delegate = self;
     self.guessField.delegate = self;
     
+    // By default
+    [self.answerLabel setHidden:YES];
     
     self.game = [Game gameWithDelegate:self];
 }
@@ -47,8 +49,18 @@
 
 - (void) gameUpdated:(Game *)game
 {
+    NSLog(@"Game updated");
+    
     self.boardField.text = game.board;
     
+    self.guessNumber.text = [NSString stringWithFormat:@"%d",game.guessesCount];
+    self.answerLabel.text = game.answer;
+    self.guessField.text = game.lastGuess;
+    
+    if (game.isGuessed) {
+        [self displayPopoverWithMessage:
+         [NSString stringWithFormat:@"Guess \"%@\" Won!",game.lastGuess]];
+    }
 }
 
 // Guessfield, update when the user presses Done
@@ -70,6 +82,7 @@
     if ([text containsOnlyEmoji]) {
         NSString *newString = [textView.text stringByReplacingCharactersInRange:range withString:text];
         [self.game updateBoard:newString];
+        NSLog(@"UPDATING BOARD");
         return YES;
     } else {
         [self displayPopoverWithMessage:@"ONLY EMOJI ALLOWED!!"];
