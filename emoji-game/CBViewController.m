@@ -157,6 +157,12 @@
     _isGuesser = isGuesser;
 }
 
+- (void) setGame:(Game *)game
+{
+    [_game stop];
+    
+    _game = game;
+}
 
 
 @end
