@@ -37,7 +37,8 @@
     // By default
     [self.answerLabel setHidden:YES];
     
-    self.game = [Game gameWithDelegate:self];
+    self.game = [[Game alloc] initNewGame:NO];
+    self.game.delegate = self;
 }
 
 - (void) viewWillAppear:(BOOL)animated
@@ -63,7 +64,6 @@
         
         self.game = [[Game alloc] initNewGame:YES];
         [self.game setDelegate:self];
-        
     }
 }
 
