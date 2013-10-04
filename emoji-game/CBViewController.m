@@ -156,6 +156,7 @@
     }
     
     self.game = [[Game alloc] initNewGame:NO isGuesser:isGuesser];
+    [self.game setDelegate:self];
     _isGuesser = isGuesser;
 }
 
