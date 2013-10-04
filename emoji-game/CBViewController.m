@@ -26,6 +26,8 @@
 
 @implementation CBViewController
 
+@synthesize game = _game;
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -37,8 +39,8 @@
     // By default
     [self.answerLabel setHidden:YES];
     
-    self.game = [[Game alloc] initNewGame:NO isGuesser:YES];
-    self.game.delegate = self;
+    _game = [[Game alloc] initNewGame:NO isGuesser:YES];
+    _game.delegate = self;
 }
 
 - (void) viewWillAppear:(BOOL)animated
@@ -157,12 +159,17 @@
     _isGuesser = isGuesser;
 }
 
-- (void) setGame:(Game *)game
+- (void)setGame:(Game *)game
 {
     _game.delegate = nil;
     [_game stop];
+    
     _game = game;
 }
 
+- (Game *) game
+{
+    return _game;
+}
 
 @end
