@@ -159,8 +159,8 @@
 
 - (void) setGame:(Game *)game
 {
+    _game.delegate = nil;
     [_game stop];
-    
     _game = game;
 }
 
