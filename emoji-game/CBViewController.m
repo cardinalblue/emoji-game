@@ -37,7 +37,7 @@
     // By default
     [self.answerLabel setHidden:YES];
     
-    self.game = [[Game alloc] initNewGame:NO];
+    self.game = [[Game alloc] initNewGame:NO isGuesser:YES];
     self.game.delegate = self;
 }
 
@@ -68,10 +68,10 @@
          [NSString stringWithFormat:@"Guess \"%@\" Won!",game.lastGuess]];
 
         if (!self.isGuesser) {
-            self.game = [[Game alloc] initNewGame:YES];
+            self.game = [[Game alloc] initNewGame:YES isGuesser:self.isGuesser];
             [self.game setDelegate:self];
         } else {
-            self.game = [[Game alloc] initNewGame:NO];
+            self.game = [[Game alloc] initNewGame:NO isGuesser:self.isGuesser];
             [self.game setDelegate:self];
         }
     }
@@ -153,6 +153,7 @@
         [self.boardField setEditable:YES];
     }
     
+    self.game = [[Game alloc] initNewGame:NO isGuesser:isGuesser];
     _isGuesser = isGuesser;
 }
 
