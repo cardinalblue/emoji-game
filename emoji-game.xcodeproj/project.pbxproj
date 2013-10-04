@@ -22,6 +22,9 @@
 		5639522617FEB2470046B13C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5639522417FEB2470046B13C /* InfoPlist.strings */; };
 		5639522817FEB2470046B13C /* emoji_gameTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5639522717FEB2470046B13C /* emoji_gameTests.m */; };
 		5639523917FEC2180046B13C /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = 5639523817FEC2180046B13C /* Game.m */; };
+		5639523C17FEC6710046B13C /* UIViewController+DisplayPopover.m in Sources */ = {isa = PBXBuildFile; fileRef = 5639523B17FEC6710046B13C /* UIViewController+DisplayPopover.m */; };
+		5639523F17FEC6970046B13C /* TBTransitoryPopover.m in Sources */ = {isa = PBXBuildFile; fileRef = 5639523E17FEC6970046B13C /* TBTransitoryPopover.m */; };
+		5639524217FEC6B30046B13C /* NSString+ContainsEmoji.m in Sources */ = {isa = PBXBuildFile; fileRef = 5639524117FEC6B30046B13C /* NSString+ContainsEmoji.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +59,12 @@
 		5639522717FEB2470046B13C /* emoji_gameTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = emoji_gameTests.m; sourceTree = "<group>"; };
 		5639523717FEC2180046B13C /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Game.h; sourceTree = "<group>"; };
 		5639523817FEC2180046B13C /* Game.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Game.m; sourceTree = "<group>"; };
+		5639523A17FEC6710046B13C /* UIViewController+DisplayPopover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+DisplayPopover.h"; sourceTree = "<group>"; };
+		5639523B17FEC6710046B13C /* UIViewController+DisplayPopover.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+DisplayPopover.m"; sourceTree = "<group>"; };
+		5639523D17FEC6970046B13C /* TBTransitoryPopover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBTransitoryPopover.h; sourceTree = "<group>"; };
+		5639523E17FEC6970046B13C /* TBTransitoryPopover.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBTransitoryPopover.m; sourceTree = "<group>"; };
+		5639524017FEC6B30046B13C /* NSString+ContainsEmoji.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+ContainsEmoji.h"; sourceTree = "<group>"; };
+		5639524117FEC6B30046B13C /* NSString+ContainsEmoji.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+ContainsEmoji.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,8 +129,14 @@
 				5639520E17FEB2470046B13C /* Main.storyboard */,
 				5639521117FEB2470046B13C /* CBViewController.h */,
 				5639521217FEB2470046B13C /* CBViewController.m */,
+				5639524017FEC6B30046B13C /* NSString+ContainsEmoji.h */,
+				5639524117FEC6B30046B13C /* NSString+ContainsEmoji.m */,
 				5639523717FEC2180046B13C /* Game.h */,
 				5639523817FEC2180046B13C /* Game.m */,
+				5639523A17FEC6710046B13C /* UIViewController+DisplayPopover.h */,
+				5639523B17FEC6710046B13C /* UIViewController+DisplayPopover.m */,
+				5639523D17FEC6970046B13C /* TBTransitoryPopover.h */,
+				5639523E17FEC6970046B13C /* TBTransitoryPopover.m */,
 				5639521417FEB2470046B13C /* Images.xcassets */,
 				5639520317FEB2470046B13C /* Supporting Files */,
 			);
@@ -256,9 +271,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				5639520917FEB2470046B13C /* main.m in Sources */,
+				5639523C17FEC6710046B13C /* UIViewController+DisplayPopover.m in Sources */,
 				5639520D17FEB2470046B13C /* CBAppDelegate.m in Sources */,
 				5639521317FEB2470046B13C /* CBViewController.m in Sources */,
+				5639523F17FEC6970046B13C /* TBTransitoryPopover.m in Sources */,
 				5639523917FEC2180046B13C /* Game.m in Sources */,
+				5639524217FEC6B30046B13C /* NSString+ContainsEmoji.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -467,6 +485,7 @@
 				5639522D17FEB2470046B13C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5639522E17FEB2470046B13C /* Build configuration list for PBXNativeTarget "emoji-gameTests" */ = {
 			isa = XCConfigurationList;
@@ -475,6 +494,7 @@
 				5639523017FEB2470046B13C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -7,16 +7,18 @@
 //
 
 #import "CBViewController.h"
+#import "Game.h"
+#import "UIViewController+DisplayPopover.h"
+#import "NSString+ContainsEmoji.h"
 
-@interface CBViewController () <UITextViewDelegate>
+@interface CBViewController () <GameDelegate,UITextViewDelegate,UITextFieldDelegate,UIActionSheetDelegate>
 
 // Model
 @property (nonatomic, assign) BOOL isGuesser;
-@property (nonatomic, strong) EmojiNetwork* network;
-
+@property (nonatomic, strong) Game* game;
 
 // View
-@property (nonatomic, weak) IBOutlet UITextView *boardView;
+@property (nonatomic, weak) IBOutlet UITextView *boardField;
 @property (nonatomic, weak) IBOutlet UILabel *answerLabel;
 @property (nonatomic, weak) IBOutlet UILabel *guessNumber;
 @property (nonatomic, weak) IBOutlet UITextField *guessField;
@@ -30,15 +32,95 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
-    // Ask what you want to be.
-    
-    // Create emojiNetwork
+    self.boardField.delegate = self;
+    self.guessField.delegate = self;
 }
 
-- (void)didReceiveMemoryWarning
+- (void) viewWillAppear:(BOOL)animated
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    [super viewWillAppear:animated];
+    
+    // Ask what you want to be.
+    [self askUserPreference];
 }
+
+
+// Guessfield, update when the user presses Done
+- (BOOL) textFieldShouldReturn:(UITextField *)textField
+{
+    // Call delegate here
+    //    [textField.text ]
+    return YES;
+}
+
+- (void) textFieldDidEndEditing:(UITextField *)textField
+{
+    [self displayPopoverWithMessage:[NSString stringWithFormat:@"You Guessed:%@",textField.text]];
+}
+
+// Board field, update every time.
+- (BOOL) textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
+{
+    if ([text containsOnlyEmoji]) {
+        return YES;
+    } else {
+        [self displayPopoverWithMessage:@"ONLY EMOJI ALLOWED!!"];
+        return NO;
+    }
+}
+
+- (IBAction)test:(id)sender
+{
+    [self askUserPreference];
+}
+
+#pragma mark - Action sheet stuff
+
+- (void) askUserPreference
+{
+    UIActionSheet *preference = [[UIActionSheet alloc] initWithTitle:@"Role?" delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:@"Guesser", @"Asker", nil];
+    [preference showInView:self.view];
+}
+
+- (void) actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+#ifdef DEBUG
+    NSLog(@"Pressed index %d",buttonIndex);
+#endif
+    switch (buttonIndex) {
+        case 0:
+            [self setIsGuesser:YES];
+            break;
+        case 1:
+            [self setIsGuesser:NO];
+            break;
+        default:
+            break;
+    }
+}
+
+- (void) setIsGuesser:(BOOL)isGuesser
+{
+    if (isGuesser) {
+        
+        [self.guessField setBackgroundColor:[UIColor clearColor]];
+        [self.guessField setUserInteractionEnabled:YES];
+        
+        [self.answerLabel setHidden:YES];
+        
+        [self.boardField setEditable:NO];
+    } else {
+        [self.guessField setBackgroundColor:[UIColor grayColor]];
+        [self.guessField setUserInteractionEnabled:NO];
+        
+        [self.answerLabel setHidden:NO];
+        
+        [self.boardField setEditable:YES];
+    }
+    
+    _isGuesser = isGuesser;
+}
+
+
 
 @end
