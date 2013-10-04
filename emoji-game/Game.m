@@ -16,6 +16,7 @@
 @property (nonatomic, readonly) NSInteger    gameId;
 @property (nonatomic, strong) NSTimer  *timer;
 @property (nonatomic, strong) NSOperationQueue *opQueue;
+@property (nonatomic, readwrite) BOOL isGuesser;
 @end
 
 @implementation Game
@@ -141,7 +142,7 @@
     }
     else {
         // For now always send the board in order to update
-        if (self.board) {
+        if (self.board && !self.isGuesser) {
             NSLog(@"---> sending board (%d)", self.board.length);
             
             NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/%d/board", API_URL, _gameId]];
@@ -175,14 +176,9 @@
     }
 }
 
-+(Game *)gameWithDelegate:(id<GameDelegate>)delegate
+- (id)initNewGame:(BOOL)newGame isGuesser:(BOOL)isGuesser
 {
-    Game *game = [[Game alloc] init];
-    game.delegate = delegate;
-    return game;
-}
-- (id)initNewGame:(BOOL)newGame
-{
+    self.isGuesser = isGuesser;
     self.timer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(updateTimer) userInfo:nil repeats:YES];
     self.opQueue = [NSOperationQueue mainQueue];
     [self requestUpdateNewGame:newGame];

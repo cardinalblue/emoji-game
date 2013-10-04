@@ -26,14 +26,10 @@
 @property (nonatomic, copy)      NSString    *board;
 @property (nonatomic, readwrite) BOOL        isGuessed;
 
-- (id)initNewGame:(BOOL)newGame;
+- (id)initNewGame:(BOOL)newGame isGuesser:(BOOL)isGuesser;
 
 -(void)makeGuess:(NSString *)guess;
 -(void)updateBoard:(NSString *)board;
 
-// As soon as you create a game, it begins polling and
-// will start updating your delegate.
-//
-+(Game *)gameWithDelegate:(id<GameDelegate>)delegate;
 
 @end
