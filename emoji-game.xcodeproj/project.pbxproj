@@ -21,6 +21,7 @@
 		5639521E17FEB2470046B13C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5639520017FEB2470046B13C /* UIKit.framework */; };
 		5639522617FEB2470046B13C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5639522417FEB2470046B13C /* InfoPlist.strings */; };
 		5639522817FEB2470046B13C /* emoji_gameTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5639522717FEB2470046B13C /* emoji_gameTests.m */; };
+		5639523917FEC2180046B13C /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = 5639523817FEC2180046B13C /* Game.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,8 @@
 		5639522317FEB2470046B13C /* emoji-gameTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "emoji-gameTests-Info.plist"; sourceTree = "<group>"; };
 		5639522517FEB2470046B13C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5639522717FEB2470046B13C /* emoji_gameTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = emoji_gameTests.m; sourceTree = "<group>"; };
+		5639523717FEC2180046B13C /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Game.h; sourceTree = "<group>"; };
+		5639523817FEC2180046B13C /* Game.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Game.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +120,8 @@
 				5639520E17FEB2470046B13C /* Main.storyboard */,
 				5639521117FEB2470046B13C /* CBViewController.h */,
 				5639521217FEB2470046B13C /* CBViewController.m */,
+				5639523717FEC2180046B13C /* Game.h */,
+				5639523817FEC2180046B13C /* Game.m */,
 				5639521417FEB2470046B13C /* Images.xcassets */,
 				5639520317FEB2470046B13C /* Supporting Files */,
 			);
@@ -253,6 +258,7 @@
 				5639520917FEB2470046B13C /* main.m in Sources */,
 				5639520D17FEB2470046B13C /* CBAppDelegate.m in Sources */,
 				5639521317FEB2470046B13C /* CBViewController.m in Sources */,
+				5639523917FEC2180046B13C /* Game.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

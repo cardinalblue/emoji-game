@@ -8,7 +8,18 @@
 
 #import "CBViewController.h"
 
-@interface CBViewController ()
+@interface CBViewController () <UITextViewDelegate>
+
+// Model
+@property (nonatomic, assign) BOOL isGuesser;
+@property (nonatomic, strong) EmojiNetwork* network;
+
+
+// View
+@property (nonatomic, weak) IBOutlet UITextView *boardView;
+@property (nonatomic, weak) IBOutlet UILabel *answerLabel;
+@property (nonatomic, weak) IBOutlet UILabel *guessNumber;
+@property (nonatomic, weak) IBOutlet UITextField *guessField;
 
 @end
 
@@ -18,6 +29,10 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    
+    // Ask what you want to be.
+    
+    // Create emojiNetwork
 }
 
 - (void)didReceiveMemoryWarning
