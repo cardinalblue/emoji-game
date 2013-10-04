@@ -52,18 +52,28 @@
 {
     NSLog(@"Game updated");
     
-    self.boardField.text = game.board;
+    if (self.isGuesser) {
+        self.boardField.text = game.board;
+    }
     
     self.guessNumber.text = [NSString stringWithFormat:@"%d",game.guessesCount];
     self.answerLabel.text = game.answer;
-    self.guessField.text = game.lastGuess;
+    
+    if (![self.guessField isFirstResponder]) {
+        self.guessField.text = game.lastGuess;
+    }
     
     if (game.isGuessed) {
         [self displayPopoverWithMessage:
          [NSString stringWithFormat:@"Guess \"%@\" Won!",game.lastGuess]];
-        
-        self.game = [[Game alloc] initNewGame:YES];
-        [self.game setDelegate:self];
+
+        if (self.isGuesser) {
+            self.game = [[Game alloc] initNewGame:YES];
+            [self.game setDelegate:self];
+        } else {
+            self.game = [[Game alloc] initNewGame:NO];
+            [self.game setDelegate:self];
+        }
     }
 }
 
