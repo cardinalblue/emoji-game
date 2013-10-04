@@ -176,6 +176,11 @@
     }
 }
 
+- (void)stop
+{
+    [self.timer invalidate];
+    self.timer = nil;
+}
 - (id)initNewGame:(BOOL)newGame isGuesser:(BOOL)isGuesser
 {
     self.isGuesser = isGuesser;

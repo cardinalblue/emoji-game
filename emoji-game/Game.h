@@ -27,6 +27,7 @@
 @property (nonatomic, readwrite) BOOL        isGuessed;
 
 - (id)initNewGame:(BOOL)newGame isGuesser:(BOOL)isGuesser;
+- (void)stop;
 
 -(void)makeGuess:(NSString *)guess;
 -(void)updateBoard:(NSString *)board;
