@@ -7,13 +7,13 @@
 //
 
 #import "CBViewController.h"
+#import "Game.h"
 
 @interface CBViewController () <UITextViewDelegate>
 
 // Model
 @property (nonatomic, assign) BOOL isGuesser;
-@property (nonatomic, strong) EmojiNetwork* network;
-
+@property (nonatomic, strong) Game* game;;
 
 // View
 @property (nonatomic, weak) IBOutlet UITextView *boardView;
@@ -33,6 +33,17 @@
     // Ask what you want to be.
     
     // Create emojiNetwork
+}
+
+
+- (void) setIsGuesser:(BOOL)isGuesser
+{
+    if (isGuesser) {
+        
+    } else {
+        
+    }
+    
 }
 
 - (void)didReceiveMemoryWarning
