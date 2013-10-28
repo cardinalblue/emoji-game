@@ -7,6 +7,7 @@
 //
 
 #import "Game.h"
+#import "CBWebImage.h"
 
 @interface Game  ()
 
@@ -28,6 +29,7 @@
 
 -(void)updateBoard:(NSString*)board
 {
+    [CBImageCache shared];
     
 }
 

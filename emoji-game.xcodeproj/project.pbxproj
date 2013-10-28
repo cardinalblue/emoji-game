@@ -7,6 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5612720E181E21710031C6D1 /* UIImage+GIF.m in Sources */ = {isa = PBXBuildFile; fileRef = 561271F3181E21710031C6D1 /* UIImage+GIF.m */; };
+		5612720F181E21710031C6D1 /* UIScreen+CBWebImageAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 561271F5181E21710031C6D1 /* UIScreen+CBWebImageAdditions.m */; settings = {COMPILER_FLAGS = "-fobj-no-arc"; }; };
+		56127210181E21710031C6D1 /* CBImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 561271F7181E21710031C6D1 /* CBImageCache.m */; };
+		56127211181E21710031C6D1 /* CBProgressImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 561271F9181E21710031C6D1 /* CBProgressImageView.m */; };
+		56127212181E21710031C6D1 /* CBWebImageCacheDownloadClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 561271FD181E21710031C6D1 /* CBWebImageCacheDownloadClient.m */; settings = {COMPILER_FLAGS = "-fobj-no-arc"; }; };
+		56127213181E21710031C6D1 /* CBWebImageDownloadClientBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 56127201181E21710031C6D1 /* CBWebImageDownloadClientBase.m */; settings = {COMPILER_FLAGS = "-fobj-no-arc"; }; };
+		56127214181E21710031C6D1 /* CBWebImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 56127203181E21710031C6D1 /* CBWebImageDownloader.m */; settings = {COMPILER_FLAGS = "-fobj-no-arc"; }; };
+		56127215181E21710031C6D1 /* CBWebImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 56127205181E21710031C6D1 /* CBWebImageManager.m */; settings = {COMPILER_FLAGS = "-fobj-no-arc"; }; };
+		56127216181E21710031C6D1 /* CBWebImageNetworkDownloadClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 56127207181E21710031C6D1 /* CBWebImageNetworkDownloadClient.m */; settings = {COMPILER_FLAGS = "-fobj-no-arc"; }; };
+		56127217181E21710031C6D1 /* CBWebImageUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 56127209181E21710031C6D1 /* CBWebImageUtils.m */; settings = {COMPILER_FLAGS = "-fobj-no-arc"; }; };
+		56127218181E21710031C6D1 /* UIImageView+CBWebImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 5612720B181E21710031C6D1 /* UIImageView+CBWebImage.m */; settings = {COMPILER_FLAGS = "-fobj-no-arc"; }; };
+		56127219181E21710031C6D1 /* UIImageView+CBWebImageAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5612720D181E21710031C6D1 /* UIImageView+CBWebImageAnimation.m */; settings = {COMPILER_FLAGS = "-fobj-no-arc"; }; };
 		563951FD17FEB2470046B13C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 563951FC17FEB2470046B13C /* Foundation.framework */; };
 		563951FF17FEB2470046B13C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 563951FE17FEB2470046B13C /* CoreGraphics.framework */; };
 		5639520117FEB2470046B13C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5639520017FEB2470046B13C /* UIKit.framework */; };
@@ -35,6 +47,34 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		561271F2181E21710031C6D1 /* UIImage+GIF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+GIF.h"; sourceTree = "<group>"; };
+		561271F3181E21710031C6D1 /* UIImage+GIF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+GIF.m"; sourceTree = "<group>"; };
+		561271F4181E21710031C6D1 /* UIScreen+CBWebImageAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScreen+CBWebImageAdditions.h"; sourceTree = "<group>"; };
+		561271F5181E21710031C6D1 /* UIScreen+CBWebImageAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScreen+CBWebImageAdditions.m"; sourceTree = "<group>"; };
+		561271F6181E21710031C6D1 /* CBImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBImageCache.h; sourceTree = "<group>"; };
+		561271F7181E21710031C6D1 /* CBImageCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBImageCache.m; sourceTree = "<group>"; };
+		561271F8181E21710031C6D1 /* CBProgressImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBProgressImageView.h; sourceTree = "<group>"; };
+		561271F9181E21710031C6D1 /* CBProgressImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBProgressImageView.m; sourceTree = "<group>"; };
+		561271FA181E21710031C6D1 /* CBWebImage-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CBWebImage-Prefix.pch"; sourceTree = "<group>"; };
+		561271FB181E21710031C6D1 /* CBWebImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBWebImage.h; sourceTree = "<group>"; };
+		561271FC181E21710031C6D1 /* CBWebImageCacheDownloadClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBWebImageCacheDownloadClient.h; sourceTree = "<group>"; };
+		561271FD181E21710031C6D1 /* CBWebImageCacheDownloadClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBWebImageCacheDownloadClient.m; sourceTree = "<group>"; };
+		561271FE181E21710031C6D1 /* CBWebImageCompat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBWebImageCompat.h; sourceTree = "<group>"; };
+		561271FF181E21710031C6D1 /* CBWebImageDownloadClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBWebImageDownloadClient.h; sourceTree = "<group>"; };
+		56127200181E21710031C6D1 /* CBWebImageDownloadClientBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBWebImageDownloadClientBase.h; sourceTree = "<group>"; };
+		56127201181E21710031C6D1 /* CBWebImageDownloadClientBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBWebImageDownloadClientBase.m; sourceTree = "<group>"; };
+		56127202181E21710031C6D1 /* CBWebImageDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBWebImageDownloader.h; sourceTree = "<group>"; };
+		56127203181E21710031C6D1 /* CBWebImageDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBWebImageDownloader.m; sourceTree = "<group>"; };
+		56127204181E21710031C6D1 /* CBWebImageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBWebImageManager.h; sourceTree = "<group>"; };
+		56127205181E21710031C6D1 /* CBWebImageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBWebImageManager.m; sourceTree = "<group>"; };
+		56127206181E21710031C6D1 /* CBWebImageNetworkDownloadClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBWebImageNetworkDownloadClient.h; sourceTree = "<group>"; };
+		56127207181E21710031C6D1 /* CBWebImageNetworkDownloadClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBWebImageNetworkDownloadClient.m; sourceTree = "<group>"; };
+		56127208181E21710031C6D1 /* CBWebImageUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBWebImageUtils.h; sourceTree = "<group>"; };
+		56127209181E21710031C6D1 /* CBWebImageUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBWebImageUtils.m; sourceTree = "<group>"; };
+		5612720A181E21710031C6D1 /* UIImageView+CBWebImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+CBWebImage.h"; sourceTree = "<group>"; };
+		5612720B181E21710031C6D1 /* UIImageView+CBWebImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+CBWebImage.m"; sourceTree = "<group>"; };
+		5612720C181E21710031C6D1 /* UIImageView+CBWebImageAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+CBWebImageAnimation.h"; sourceTree = "<group>"; };
+		5612720D181E21710031C6D1 /* UIImageView+CBWebImageAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+CBWebImageAnimation.m"; sourceTree = "<group>"; };
 		563951F917FEB2470046B13C /* emoji-game.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "emoji-game.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		563951FC17FEB2470046B13C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		563951FE17FEB2470046B13C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -82,6 +122,50 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		561271F0181E21710031C6D1 /* CBWebImage */ = {
+			isa = PBXGroup;
+			children = (
+				561271F1181E21710031C6D1 /* Categories */,
+				561271F6181E21710031C6D1 /* CBImageCache.h */,
+				561271F7181E21710031C6D1 /* CBImageCache.m */,
+				561271F8181E21710031C6D1 /* CBProgressImageView.h */,
+				561271F9181E21710031C6D1 /* CBProgressImageView.m */,
+				561271FA181E21710031C6D1 /* CBWebImage-Prefix.pch */,
+				561271FB181E21710031C6D1 /* CBWebImage.h */,
+				561271FC181E21710031C6D1 /* CBWebImageCacheDownloadClient.h */,
+				561271FD181E21710031C6D1 /* CBWebImageCacheDownloadClient.m */,
+				561271FE181E21710031C6D1 /* CBWebImageCompat.h */,
+				561271FF181E21710031C6D1 /* CBWebImageDownloadClient.h */,
+				56127200181E21710031C6D1 /* CBWebImageDownloadClientBase.h */,
+				56127201181E21710031C6D1 /* CBWebImageDownloadClientBase.m */,
+				56127202181E21710031C6D1 /* CBWebImageDownloader.h */,
+				56127203181E21710031C6D1 /* CBWebImageDownloader.m */,
+				56127204181E21710031C6D1 /* CBWebImageManager.h */,
+				56127205181E21710031C6D1 /* CBWebImageManager.m */,
+				56127206181E21710031C6D1 /* CBWebImageNetworkDownloadClient.h */,
+				56127207181E21710031C6D1 /* CBWebImageNetworkDownloadClient.m */,
+				56127208181E21710031C6D1 /* CBWebImageUtils.h */,
+				56127209181E21710031C6D1 /* CBWebImageUtils.m */,
+				5612720A181E21710031C6D1 /* UIImageView+CBWebImage.h */,
+				5612720B181E21710031C6D1 /* UIImageView+CBWebImage.m */,
+				5612720C181E21710031C6D1 /* UIImageView+CBWebImageAnimation.h */,
+				5612720D181E21710031C6D1 /* UIImageView+CBWebImageAnimation.m */,
+			);
+			name = CBWebImage;
+			path = Vendor/CBWebImage/CBWebImage/CBWebImage;
+			sourceTree = SOURCE_ROOT;
+		};
+		561271F1181E21710031C6D1 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				561271F2181E21710031C6D1 /* UIImage+GIF.h */,
+				561271F3181E21710031C6D1 /* UIImage+GIF.m */,
+				561271F4181E21710031C6D1 /* UIScreen+CBWebImageAdditions.h */,
+				561271F5181E21710031C6D1 /* UIScreen+CBWebImageAdditions.m */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
 		563951F017FEB2470046B13C = {
 			isa = PBXGroup;
 			children = (
@@ -122,6 +206,7 @@
 				5639521217FEB2470046B13C /* CBViewController.m */,
 				5639523717FEC2180046B13C /* Game.h */,
 				5639523817FEC2180046B13C /* Game.m */,
+				561271F0181E21710031C6D1 /* CBWebImage */,
 				5639521417FEB2470046B13C /* Images.xcassets */,
 				5639520317FEB2470046B13C /* Supporting Files */,
 			);
@@ -255,10 +340,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56127218181E21710031C6D1 /* UIImageView+CBWebImage.m in Sources */,
+				56127211181E21710031C6D1 /* CBProgressImageView.m in Sources */,
+				56127210181E21710031C6D1 /* CBImageCache.m in Sources */,
 				5639520917FEB2470046B13C /* main.m in Sources */,
+				5612720F181E21710031C6D1 /* UIScreen+CBWebImageAdditions.m in Sources */,
 				5639520D17FEB2470046B13C /* CBAppDelegate.m in Sources */,
+				56127212181E21710031C6D1 /* CBWebImageCacheDownloadClient.m in Sources */,
+				56127216181E21710031C6D1 /* CBWebImageNetworkDownloadClient.m in Sources */,
 				5639521317FEB2470046B13C /* CBViewController.m in Sources */,
+				56127213181E21710031C6D1 /* CBWebImageDownloadClientBase.m in Sources */,
+				5612720E181E21710031C6D1 /* UIImage+GIF.m in Sources */,
+				56127219181E21710031C6D1 /* UIImageView+CBWebImageAnimation.m in Sources */,
+				56127214181E21710031C6D1 /* CBWebImageDownloader.m in Sources */,
+				56127217181E21710031C6D1 /* CBWebImageUtils.m in Sources */,
 				5639523917FEC2180046B13C /* Game.m in Sources */,
+				56127215181E21710031C6D1 /* CBWebImageManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -467,6 +564,7 @@
 				5639522D17FEB2470046B13C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5639522E17FEB2470046B13C /* Build configuration list for PBXNativeTarget "emoji-gameTests" */ = {
 			isa = XCConfigurationList;
@@ -475,6 +573,7 @@
 				5639523017FEB2470046B13C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
