@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>B11A1DA6-B04D-4FF5-B5AF-CFAF3DBC500A</string>
+	<key>IDESourceControlProjectName</key>
+	<string>emoji-game</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>26691488-EEFB-496A-803A-03DAAF9D9130</key>
+		<string>ssh://github.com/cardinalblue/emoji-game.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>emoji-game.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>26691488-EEFB-496A-803A-03DAAF9D9130</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://github.com/cardinalblue/emoji-game.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>26691488-EEFB-496A-803A-03DAAF9D9130</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>26691488-EEFB-496A-803A-03DAAF9D9130</string>
+			<key>IDESourceControlWCCName</key>
+			<string>emoji-game</string>
+		</dict>
+	</array>
+</dict>
+</plist>
