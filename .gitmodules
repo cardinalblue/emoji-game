@@ -1,0 +1,6 @@
+[submodule "Vendor/MBSwitch"]
+	path = Vendor/MBSwitch
+	url = https://github.com/yyjim/MBSwitch.git
+[submodule "Vendor/CBWebImage"]
+	path = Vendor/CBWebImage
+	url = https://github.com/cardinalblue/CBWebImage.git
